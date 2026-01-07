@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="p-6 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">View Daily Chart</h2>
+    <p><strong>Station Name:</strong> {{ get_chart.station_name }}</p>
+    <p><strong>Station ID:</strong> {{ get_chart.station_id }}</p>
+    <p><strong>Station Code:</strong> {{ get_chart.station_code }}</p>
+    <p><strong>Assignment:</strong> {{ get_chart.assignment }}</p>
+    <p><strong>Date:</strong> {{ get_chart.date }}</p>
+    {% if get_chart.image %}
+    <p><strong>Image:</strong></p>
+    <img src="{{ get_chart.image.url }}" alt="Chart Image" class="max-w-full rounded mt-2">
+    {% endif %}
+    <a href="{% url 'daily_charts' %}"
+        class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Back</a>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'css/src/output.css' %}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <div class="flex h-screen bg-gray-100">
+
+        {% include "partials/sidebar.html" %}
+        <input type="checkbox" id="menu-toggle" class="hidden" />
+
+        <!-- Main Content -->
+        <div class="flex flex-col flex-1 overflow-y-auto">
+
+            <div class="flex items-center justify-between h-16 bg-blue-600 ">
+                <div class="flex items-center px-4">
+
+                    <label for="menu-toggle" class="md:hidden mr-4 bg-gray-800 text-white p-2 rounded cursor-pointer">
+                        <i class='bx bx-menu text-2xl'></i>
+                    </label>
+
+                    <h2 class="text-xl font-bold text-white">Rainfall Chart Management System</h2>
+                </div>
+
+                <div class="flex items-center pr-4 text-white">
+                    {% if user.is_authenticated %}
+                    <h4 class="pr-4 font-medium">{{ request.user.username }}</h4>
+                    <button class="flex items-center text-white hover:text-gray-700">
+                        <a href="/logout">Logout</a>
+                        <i class='bx bx-log-out text-2xl'></i>
+                    </button>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="p-4">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <div class="w-full fixed bottom-0 bg-gray-300 h-[40px] flex justify-center items-center">
+            HMDAS
+        </div>
+    </div>
+    <script>
+        const toggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                sidebar.classList.remove('-translate-x-full');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
+    {% endif %}
+
+</body>
+
+</html>

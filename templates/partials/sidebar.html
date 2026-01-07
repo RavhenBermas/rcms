@@ -1,0 +1,78 @@
+<!-- Sidebar -->
+<div class="hidden peer-checked:flex md:flex flex-col w-64 bg-gray-800 transition-all duration-300 ease-in-out">
+
+  <div class="flex items-center justify-between h-16 bg-blue-800 px-4">
+    <div class="flex items-center justify-around h-full">
+      <div class="w-12.5 h-12.5 bg-amber-300 rounded-full mr-1"><img
+          src="https://ph.images.search.yahoo.com/images/view;_ylt=AwrKAHhiNFtp8Mg5oqq1Rwx.;_ylu=c2VjA3NyBHNsawNpbWcEb2lkAzBhMzllOWQ2YTllYTNjYWI3ZTZlMmY2YzQ5NTNjNmNhBGdwb3MDMQRpdANiaW5n?back=https%3A%2F%2Fph.images.search.yahoo.com%2Fsearch%2Fimages%3Fp%3Dhmdas-pagasa%2Blogo%26ei%3DUTF-8%26type%3DE210PH91215G0%26fr%3Dmcafee%26fr2%3Dp%253As%252Cv%253Ai%252Cm%253Asb-top%26tab%3Dorganic%26ri%3D1&w=696&h=696&imgurl=cdn.manilastandard.net%2Fwp-content%2Fuploads%2F2024%2F08%2FPAGASA-logo-696x696.png&rurl=https%3A%2F%2Fmanilastandard.net%2F%3Fp%3D314493335&size=86KB&p=hmdas-pagasa+logo&oid=0a39e9d6a9ea3cab7e6e2f6c4953c6ca&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&fr=mcafee&tt=PAGASA%3A+After+%E2%80%98Enteng%2C%E2%80%99+2+tropical+cyclones+likely+to+enter+the+...&b=0&ni=160&no=1&ts=&tab=organic&sigr=6tDG4j1OMRtm&sigb=GQqAvv8o.0l5&sigi=lObNW1nfiHG_&sigt=K0Aa25Djx51L&.crumb=Q60mt2j69EK&fr=mcafee&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&type=E210PH91215G0"
+          alt=""></div>
+      <span class="text-white font-bold uppercase">HMDAS-HMD</span>
+    </div>
+
+    <label for="menu-toggle" class="text-white cursor-pointer lg:hidden">
+      <i class='bx bx-x text-2xl'></i>
+    </label>
+  </div>
+
+  <div class="flex flex-col flex-1 overflow-y-auto">
+    <nav class="flex-1 px-2 py-4 bg-blue-500">
+
+      <!-- Scanned Charts -->
+      <div class="mb-2 relative group">
+        <input type="checkbox" id="scanned-toggle" class="hidden peer">
+
+        <label for="scanned-toggle"
+          class="flex items-center px-12 py-2 mt-2 text-white rounded bg-blue-700 hover:bg-blue-600 cursor-pointer w-full">
+          Scanned Charts
+        </label>
+
+        <i class='bx bx-envelope absolute left-4 top-2 text-white text-2xl'></i>
+        <i class='bx bx-chevron-down absolute right-4 top-3 text-white peer-checked:rotate-180 transition'></i>
+
+        <div class="hidden peer-checked:flex flex-col text-gray-100 mt-1">
+          <a href="/daily-charts" class="block px-4 py-2 hover:bg-gray-700">Daily Charts</a>
+          <a href="/weekly-charts" class="block px-4 py-2 hover:bg-gray-700">Weekly Charts</a>
+        </div>
+      </div>
+
+      <!-- Observation -->
+      <div class="mb-2 relative group">
+        <input type="checkbox" id="observation-toggle" class="hidden peer">
+
+        <label for="observation-toggle"
+          class="flex items-center px-12 py-2 mt-2 text-white rounded bg-blue-700 hover:bg-blue-600 cursor-pointer w-full">
+          Observation
+        </label>
+
+        <i class='bx bx-envelope absolute left-4 top-2 text-white text-2xl'></i>
+        <i class='bx bx-chevron-down absolute right-4 top-3 text-white peer-checked:rotate-180 transition'></i>
+
+        <div class="hidden peer-checked:flex flex-col text-gray-100 mt-1">
+          <a href="/6-hourly" class="block px-4 py-2 hover:bg-gray-700">6-Hourly</a>
+        </div>
+      </div>
+
+      {% if user.is_staff or user.is_superuser %}
+      <!-- Accounts -->
+      <a href="/accounts"
+        class="flex items-center px-4 py-2 mb-2 text-white rounded bg-blue-700 hover:bg-blue-600 group">
+        <i class='bx bx-grid-alt text-2xl mr-2'></i>
+        Accounts
+      </a>
+
+      <!-- Audit Logs -->
+      <a href="/logs" class="flex items-center mb-2 px-4 py-2 text-white rounded bg-blue-700 hover:bg-blue-600 group">
+        <i class='bx bx-user text-2xl mr-2'></i>
+        Audit Logs
+      </a>
+      {% else %}
+      <a href="/logs" class="flex items-center px-4 py-2 text-white rounded bg-blue-700 hover:bg-blue-600 group">
+        <i class='bx bx-user text-2xl mr-2'></i>
+        About Us
+      </a>
+      {% endif %}
+
+
+    </nav>
+  </div>
+</div>
