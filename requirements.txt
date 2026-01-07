@@ -1,0 +1,7 @@
+Django>=4.2,<5.0
+djangorestframework>=3.14
+psycopg2-binary>=2.9       # Only if you use PostgreSQL
+Pillow>=10.0                # For image handling
+python-dotenv>=1.0          # For loading .env files
+gunicorn>=21.0              # For deploying on Linux servers
+django-cors-headers>=4.0    # If using APIs with frontend
